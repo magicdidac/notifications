@@ -1,6 +1,6 @@
 {
   "name": "@magicdidac/notifications",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "description": "Package to be able to use notifications in any react application",
   "keywords": [
@@ -18,7 +18,8 @@
     "url": "https://github.com/magicdidac/notifications.git"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && yarn copy-css",
+    "copy-css": "cp -r ./src/styles/ ./dist"
   },
   "devDependencies": {
     "@types/node": "^20.4.8",

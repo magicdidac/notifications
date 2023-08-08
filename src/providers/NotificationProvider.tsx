@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react"
 import { EVENT_NAME } from "../constants"
-import { Notification, NotificationEvent, NotificationWithId } from "../types/types"
-import '../styles/toast.css'
+import { NotificationEvent, NotificationWithId } from "../types/types"
 import { Toast } from "../Components/Toast"
+import '../styles/toast.css'
 
 export const NotificationProvider = () => {
   const [notifications, setNotifications] = useState<NotificationWithId[]>([])
