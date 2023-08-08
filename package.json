@@ -1,0 +1,32 @@
+{
+  "name": "@magicdidac/notifications",
+  "version": "0.01",
+  "main": "dist/index.js",
+  "description": "Package to be able to use notifications in any react application",
+  "keywords": [
+    "react",
+    "typescript",
+    "notifications",
+    "toast",
+    "alert"
+  ],
+  "license": "MIT",
+  "author": "magicdidac",
+  "homepage": "https://github.com/magicdidac/notifications#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magicdidac/notifications.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@types/react": "^18.2.19",
+    "react": "^18.2.0"
+  }
+}
