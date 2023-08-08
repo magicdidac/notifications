@@ -1,5 +1,5 @@
 {
-  "name": "react-notifications",
+  "name": "@magicdidac/notifications",
   "version": "0.0.1",
   "main": "dist/index.js",
   "description": "Package to be able to use notifications in any react application",
