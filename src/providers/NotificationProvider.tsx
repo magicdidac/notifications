@@ -7,6 +7,7 @@ export const NotificationProvider = () => {
 
   const addNotification = useCallback((event: NotificationEvent) => {
     if (event.detail) {
+      console.log('Notification:', event.detail)
       setNotifications([...notifications, event.detail.message])
     }
   }, [])
@@ -21,7 +22,7 @@ export const NotificationProvider = () => {
 
   return (
     <div>
-      Hello
+      hello
     </div>
   )
 }
