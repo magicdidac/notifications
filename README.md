@@ -38,16 +38,11 @@ import {NotificationProvider} from '@magicdidac/notifications'
 
 #### Properties
 
-##### 1. postitionX
-The horizontal notifications position (default: PositionX.right)
-```PositionX.left | PositionX.center | PositionX.right```
-
-##### 2. positionY
-The vertical notifications position (default: PositionY.bottom)
-```PositionY.top | PositionY.bottom```
-
-##### 3. width
-Is the notifications width (default: 400px)
+| Property  | Description                                                   | Default          | Values                                                |
+|-----------|---------------------------------------------------------------|------------------|-------------------------------------------------------|
+| positionX | The horizontal position where the notifications will be shown | PositionX.right  | PositionX.left \| PositionX.center \| PositionX.right |
+| postionY  | The vertical position where the notifications will be shown   | PositionY.bottom | PositionY.top \| PositionY.bottom                     |
+| width     | The width of the notifications                                | 400px            | string                                                |
 
 ### useNotifications
 
@@ -71,6 +66,8 @@ Every function has the same parameters
 |-------------------|--------------------------------------------------------------------|----------|---------|
 | message           | The message to show                                                |    No    |         |
 | options.autoClose | Set to true to close the notification automatically over 5 seconds |    Yes   | true    |
+
+These are all the functions
 
 | Function |  Example |
 |----------|----------|
