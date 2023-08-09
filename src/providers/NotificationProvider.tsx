@@ -1,18 +1,27 @@
 import { useCallback, useEffect, useState } from "react"
 import { EVENT_NAME } from "../constants"
-import { NotificationEvent, NotificationWithId } from "../types/types"
+import { CompletNotification, NotificationEvent, PositionX, PositionY } from "../types/types"
 import { Toast } from "../Components/Toast"
 import '../styles/toast.css'
 
-export const NotificationProvider = () => {
-  const [notifications, setNotifications] = useState<NotificationWithId[]>([])
+interface INotificationProviderProps {
+  positionX?: PositionX
+  positionY?: PositionY
+  width?: string
+}
+
+/**
+ * This provider makes that you can invoke a Notification using the notification hook wherever you want
+ */
+export const NotificationProvider = (props: INotificationProviderProps) => {
+  const [notifications, setNotifications] = useState<CompletNotification[]>([])
 
   const addNotification = useCallback((event: NotificationEvent) => {
     if (event.detail) {
-      console.log('Notification:', event.detail)
+      console.log(event.detail)
       setNotifications([...notifications, { ...event.detail, id: Date.now() }])
     }
-  }, [])
+  }, [notifications])
 
   const removeNotification = (notificationId: number) => {
     setNotifications(notifications.filter((notification) => notification.id !== notificationId))
@@ -27,7 +36,10 @@ export const NotificationProvider = () => {
   }, [addNotification])
 
   return (
-    <div className="toast-container">
+    <div
+      className={["toast-container", props.positionX ?? PositionX.right, props.positionY ?? PositionY.bottom].join(' ')}
+      style={{ maxWidth: props.width ?? '400px' }}
+    >
       {
         notifications.map((notification) => (
           <Toast key={notification.id} notification={notification} onClose={removeNotification} />

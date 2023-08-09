@@ -1,25 +1,48 @@
 import { EVENT_NAME } from "../constants"
-import { NotificationTypes } from "../types/types"
+import { NotificationOptions, NotificationTypes } from "../types/types"
 
+/**
+ * Returns an object with 4 functions to invoke different Notification types
+ */
 export const useNotifications = () => {
-  const showNotification = (message: string, type: NotificationTypes = NotificationTypes.success) => {
-    window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail: { message, type } }))
+  const showNotification = (message: string, type: NotificationTypes, options?: NotificationOptions) => {
+    window.dispatchEvent(new CustomEvent(EVENT_NAME, { detail: { message, type, options } }))
   }
 
-  const success = (message: string) => {
-    showNotification(message)
+  /**
+   * Invokes a Success Notification
+   * @param message Message you want to show
+   * @param options (optional) Notification toast options
+   */
+  const success = (message: string, options?: NotificationOptions) => {
+    showNotification(message, NotificationTypes.success, options)
   }
 
-  const error = (message: string) => {
-    showNotification(message, NotificationTypes.error)
+  /**
+ * Invokes an Error Notification
+ * @param message Message you want to show
+ * @param options (optional) Notification toast options
+ */
+  const error = (message: string, options?: NotificationOptions) => {
+    showNotification(message, NotificationTypes.error, options)
   }
 
-  const warning = (message: string) => {
-    showNotification(message, NotificationTypes.warning)
+  /**
+ * Invokes a Warning Notification
+ * @param message Message you want to show
+ * @param options (optional) Notification toast options
+ */
+  const warning = (message: string, options?: NotificationOptions) => {
+    showNotification(message, NotificationTypes.warning, options)
   }
 
-  const info = (message: string) => {
-    showNotification(message, NotificationTypes.info)
+  /**
+ * Invokes an Information Notification
+ * @param message Message you want to show
+ * @param options (optional) Notification toast options
+ */
+  const info = (message: string, options?: NotificationOptions) => {
+    showNotification(message, NotificationTypes.info, options)
   }
 
   return {

@@ -3,12 +3,12 @@ import { ErrorIcon } from "../icons/ErrorIcon"
 import { InfoIcon } from "../icons/InfoIcon"
 import { SuccessIcon } from "../icons/SuccessIcon"
 import { WarningIcon } from "../icons/WarningIcon"
-import { ColorPair, NotificationTypes, NotificationWithId } from "../types/types"
+import { CompletNotification, NotificationTypes } from "../types/types"
 import '../styles/toast.css'
-import { useEffect, useState } from "react"
+import { AnimationEvent, useState } from "react"
 
 interface IToastProps {
-  notification: NotificationWithId
+  notification: CompletNotification
   onClose: (notificationId: number) => void
 }
 
@@ -41,19 +41,34 @@ export const Toast = ({ notification, onClose }: IToastProps) => {
     }
   }
 
-  useEffect(() => {
-    setInterval(() => onClose(notification.id), 5000)
-  }, [])
+  const closeToast = (event: AnimationEvent) => {
+    if (event.animationName === 'progressing') {
+      setClosing(true)
+    }
+
+    if (closing) {
+      onClose(notification.id)
+    }
+  }
 
   const handleClose = () => {
     if (!closing) {
       setClosing(true)
-      setInterval(() => onClose(notification.id), 200)
     }
   }
 
+  const getToastClases = (): string => {
+    const classes = ['toast']
+
+    if (!notification.options || notification.options.autoClose === undefined || notification.options.autoClose === true) classes.push('toast-autoClose')
+
+    if (closing) classes.push('toast-closing')
+
+    return classes.join(' ')
+  }
+
   return (
-    <div className={closing ? 'toast toast-closing' : 'toast'} style={{ background: getColor() }}>
+    <div className={getToastClases()} style={{ background: getColor() }} onAnimationEnd={closeToast}>
       <div className="toast-content">
         <div className="toast-icon">
           {getIcon()}

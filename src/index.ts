@@ -1,9 +1,11 @@
-import { NotificationEvent } from "./types/types"
 import { NotificationProvider } from "./providers/NotificationProvider"
 import { useNotifications } from "./hooks/useNotifications"
+import { PositionX, PositionY, NotificationOptions } from "./types/types"
 
 export {
-    NotificationEvent,
     NotificationProvider,
-    useNotifications
+    useNotifications,
+    PositionX,
+    PositionY,
+    type NotificationOptions
 }

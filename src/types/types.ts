@@ -5,20 +5,31 @@ export enum NotificationTypes {
   info = 'info'
 }
 
+export enum PositionX {
+  left = 'toast-left',
+  center = 'toast-center',
+  right = 'toast-right'
+}
+
+export enum PositionY {
+  top = 'toast-top',
+  bottom = 'toast-bottom'
+}
+
 export interface NotificationEvent extends Event {
   detail?: Notification
 }
 
+export interface NotificationOptions {
+  autoClose?: boolean
+}
+
 export interface Notification {
-  message: string,
+  message: string
   type: NotificationTypes
+  options?: NotificationOptions
 }
 
-export interface NotificationWithId extends Notification {
+export interface CompletNotification extends Notification {
   id: number
-}
-
-export interface ColorPair {
-  default: string
-  hover: string
 }
