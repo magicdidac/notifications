@@ -37,16 +37,18 @@ export const NotificationProvider = (props: INotificationProviderProps) => {
   }, [addNotification])
 
   return (
-    <div
-      className={["toast-container", props.positionX ?? PositionX.right, props.positionY ?? PositionY.bottom].join(' ')}
-      style={{ maxWidth: props.width ?? '400px' }}
-    >
+    <>
       {props.children}
-      {
-        notifications.map((notification) => (
-          <Toast key={notification.id} notification={notification} onClose={removeNotification} />
-        ))
-      }
-    </div>
+      <div
+        className={["toast-container", props.positionX ?? PositionX.right, props.positionY ?? PositionY.bottom].join(' ')}
+        style={{ maxWidth: props.width ?? '400px' }}
+      >
+        {
+          notifications.map((notification) => (
+            <Toast key={notification.id} notification={notification} onClose={removeNotification} />
+          ))
+        }
+      </div>
+    </>
   )
 }
