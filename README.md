@@ -30,8 +30,9 @@ These are some examples of the four types of notification.
 import {NotificationProvider} from '@magicdidac/notifications'
 ...
 <React.StrictMode>
-  <App />
-  <NotificationProvider />
+  <NotificationProvider>
+    <App />
+  </NotificationProvider>
 </React.StrictMode>
 ...
 ```
@@ -54,7 +55,7 @@ import { useNotifications } from '@magicdidac/notification'
 const notifications = useNotifications()
 ...
 return (
- <button onClick={() => notifications.success("It's working!")}>Click Me!</button>
+ <button onClick={() => notifications.success("Working!")}>Click Me!</button>
 )
 ...
 ```

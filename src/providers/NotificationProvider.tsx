@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { ReactNode, useCallback, useEffect, useState } from "react"
 import { EVENT_NAME } from "../constants"
 import { CompletNotification, NotificationEvent, PositionX, PositionY } from "../types/types"
 import { Toast } from "../Components/Toast"
@@ -8,6 +8,7 @@ interface INotificationProviderProps {
   positionX?: PositionX
   positionY?: PositionY
   width?: string
+  children: ReactNode
 }
 
 /**
@@ -40,6 +41,7 @@ export const NotificationProvider = (props: INotificationProviderProps) => {
       className={["toast-container", props.positionX ?? PositionX.right, props.positionY ?? PositionY.bottom].join(' ')}
       style={{ maxWidth: props.width ?? '400px' }}
     >
+      {props.children}
       {
         notifications.map((notification) => (
           <Toast key={notification.id} notification={notification} onClose={removeNotification} />
