@@ -41,7 +41,7 @@ export const NotificationProvider = (props: INotificationProviderProps) => {
       {props.children}
       <div
         className={["toast-container", props.positionX ?? PositionX.right, props.positionY ?? PositionY.bottom].join(' ')}
-        style={{ maxWidth: props.width ?? '400px', zIndex: 2 }}
+        style={{ maxWidth: props.width ?? '400px', zIndex: 10000 }}
       >
         {
           notifications.map((notification) => (
